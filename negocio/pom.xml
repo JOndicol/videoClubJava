@@ -4,7 +4,7 @@
 
   <groupId>com.sopra.peliculas</groupId>
   <artifactId>negocio</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
 
   <name>negocio</name>
@@ -19,8 +19,8 @@
   <dependencies>
   	<dependency>
   		<groupId>com.sopra.peliculas</groupId>
-  		<artifactId>dao</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
+		<artifactId>dao</artifactId>
+		<version>1.0.0</version>
   		<scope>compile</scope>
   	</dependency>
   </dependencies>
