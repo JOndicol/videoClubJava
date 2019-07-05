@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="pelicula" class="com.sopra.peliculas.modelo.Pelicula" scope="prototype"></bean>
+	
+	<bean id = "miGestionDePeliculas" class = "com.sopra.peliculas.negocio.GestorPeliculas" scope="singleton">
+		<property name="miDaoPeliculas" ref="miDaoPeliculas"/>
+		<property name="peliculaAInsertar" ref="pelicula"></property>
+	</bean>
+	
+	<bean id = "miDaoPeliculas" class = "com.sopra.peliculas.dao.PeliculasDaoImplemtacion" scope="singleton">
+		<property name="mapaPeliculas" ref="hashMapPelis"/>
+	</bean>
+	
+	<bean id="hashMapPelis" class="java.util.HashMap" scope="singleton">	
+	</bean>
+	
+	<bean id="listaArray" class="java.util.ArrayList" scope="prototype">	
+	</bean>
+	
+</beans>

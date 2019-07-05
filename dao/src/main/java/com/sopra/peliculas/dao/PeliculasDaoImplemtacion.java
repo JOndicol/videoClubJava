@@ -7,41 +7,46 @@ import com.sopra.peliculas.modelo.Pelicula;
 
 public class PeliculasDaoImplemtacion implements IPeliculaDao<Integer, Pelicula>{
 	
-	private Map<Integer, Pelicula> listaPeliculas;
+	private Map<Integer, Pelicula> mapaPeliculas;
 	
-	
-
-	public PeliculasDaoImplemtacion(Map<Integer, Pelicula> listaPeliculas) {
+	public PeliculasDaoImplemtacion() {
 		super();
-		this.listaPeliculas = listaPeliculas;
 	}
 
 	@Override
 	public void createPelicula(Pelicula peliculaAInsertar) {
-		listaPeliculas.putIfAbsent(peliculaAInsertar.getIdentificador(), peliculaAInsertar);	
+		mapaPeliculas.putIfAbsent(peliculaAInsertar.getIdentificador(), peliculaAInsertar);	
 	}
 
 	@Override
 	public void deletePelicula(Pelicula peliculaABorrar) {
-		listaPeliculas.remove(peliculaABorrar.getIdentificador());
+		mapaPeliculas.remove(peliculaABorrar.getIdentificador());
 	}
 
 	@Override
 	public void updatePelicula(Pelicula peliculaAActualizar) {
-		listaPeliculas.replace(peliculaAActualizar.getIdentificador(), peliculaAActualizar);
+		mapaPeliculas.replace(peliculaAActualizar.getIdentificador(), peliculaAActualizar);
 		
 	}
 
 	@Override
 	public Pelicula readById(Integer identificador) {
-		return listaPeliculas.get(identificador);
+		return mapaPeliculas.get(identificador);
 	}
 
 	@Override
 	public Collection<Pelicula> read() {
-		return listaPeliculas.values();
+		return mapaPeliculas.values();
 	}
 
+	public Map<Integer, Pelicula> getMapaPeliculas() {
+		return mapaPeliculas;
+	}
 
+	public void setMapaPeliculas(Map<Integer, Pelicula> mapaPeliculas) {
+		this.mapaPeliculas = mapaPeliculas;
+	}
+	
+	
 
 }

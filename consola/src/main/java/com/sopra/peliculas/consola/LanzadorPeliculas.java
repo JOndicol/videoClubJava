@@ -1,35 +1,40 @@
 package com.sopra.peliculas.consola;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.sopra.peliculas.modelo.Categoria;
 import com.sopra.peliculas.modelo.Pelicula;
 import com.sopra.peliculas.negocio.GestorPeliculas;
 
-public class lanzador {
+public class LanzadorPeliculas {
 	
+	private static ApplicationContext context  = new ClassPathXmlApplicationContext("bean_bussiness.xml");
 	
 	public static void main(String[] args) {
 
-		GestorPeliculas gestor = new GestorPeliculas();
-		List<Categoria> listCat = new ArrayList<Categoria>();
+		
+		GestorPeliculas gestor = context.getBean("miGestionDePeliculas", GestorPeliculas.class);
+		List<Categoria> listCat = context.getBean("listaArray", List.class);
 		listCat.add(Categoria.DRAMA);
 		listCat.add(Categoria.ACCION);
 		
+		//TODO: Crea dos posiciones de mas antes, echar un ojo y arreglar
 		for(int i = 0; i < 8; i++) {
 			gestor.altaPelicula("Pepito", "Hulio", "Es increible", listCat);
 		}
 		
-		List<Categoria> listLord = new ArrayList<Categoria>();
+		List<Categoria> listLord = context.getBean("listaArray", List.class);
 		listLord.add(Categoria.CIENCIA_FICCION);
 		listLord.add(Categoria.ACCION);
 		listLord.add(Categoria.TERROR);
 		
 		gestor.altaPelicula("The lord of the Rings", "Peter Jackson", "Best movie ever", listLord);
 		
-		List<Categoria> listStar = new ArrayList<Categoria>();
+		List<Categoria> listStar = context.getBean("listaArray", List.class);
 		listStar.add(Categoria.ACCION);
 		listStar.add(Categoria.TERROR);
 		
@@ -37,10 +42,10 @@ public class lanzador {
 		
 		imprimirPeliculas(gestor.listarPeliculas());
 		
-		Pelicula peli1 = new Pelicula();
-		Pelicula peli2 = new Pelicula();
+		Pelicula peli1 = context.getBean("pelicula", Pelicula.class);
+		Pelicula peli2 = context.getBean("pelicula", Pelicula.class);
 		
-		List<Categoria> listaCatActualizada = new ArrayList<Categoria>();
+		List<Categoria> listaCatActualizada = context.getBean("listaArray", List.class);
 		listaCatActualizada.add(Categoria.DRAMA);
 		listaCatActualizada.add(Categoria.TERROR);
 		
@@ -56,7 +61,7 @@ public class lanzador {
 		peli2.setListaDeCategorias(listaCatActualizada);
 		peli2.setIdentificador(2);
 		
-		List<Pelicula> listaActual = new ArrayList<Pelicula>();
+		List<Pelicula> listaActual = context.getBean("listaArray", List.class);
 		listaActual.add(peli1);
 		listaActual.add(peli2);
 		
@@ -64,7 +69,7 @@ public class lanzador {
 	
 		imprimirPeliculas(gestor.listarPeliculas());
 		
-		List<Integer> listaDeletes = new ArrayList<Integer>();
+		List<Integer> listaDeletes = context.getBean("listaArray", List.class);
 		listaDeletes.add(2);
 		listaDeletes.add(5);
 		
@@ -75,7 +80,7 @@ public class lanzador {
 	
 	public static void imprimirPeliculas(Collection<Pelicula> peliculas) {
 		for(Pelicula pelicula: peliculas) {
-			System.out.print(pelicula.getDirector() + " " + pelicula.getTitulo() + " " + pelicula.getListaDeCategorias());
+			System.out.println(pelicula);
 		}
 		System.out.println();
 	}

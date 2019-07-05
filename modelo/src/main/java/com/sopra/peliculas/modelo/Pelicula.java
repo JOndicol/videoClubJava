@@ -18,6 +18,7 @@ public class Pelicula {
 	
 	public Pelicula() {
 		super();
+		this.identificador = secuencia.incrementAndGet();
 	}
 
 	public Pelicula(String titulo, String director, String sinopsis,
@@ -28,6 +29,13 @@ public class Pelicula {
 		this.director = director;
 		this.sinopsis = sinopsis;
 		this.listaDeCategorias = listaDeCategorias;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Pelicula [identificador=" + identificador + ", titulo=" + titulo + ", director=" + director
+				+ ", sinopsis=" + sinopsis + ", listaDeCategorias=" + listaDeCategorias + "]";
 	}
 
 	@Override
