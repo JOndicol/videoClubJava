@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.sopra.peliculas.modelo.Categoria;
@@ -12,7 +13,11 @@ import com.sopra.peliculas.negocio.GestorPeliculas;
 
 public class LanzadorPeliculas {
 	
-	private static ApplicationContext context  = new ClassPathXmlApplicationContext("bean_bussiness.xml");
+	private static ApplicationContext context;
+	
+	static {
+		context  = new ClassPathXmlApplicationContext("bean_bussiness.xml");
+	}
 	
 	public static void main(String[] args) {
 
@@ -21,10 +26,9 @@ public class LanzadorPeliculas {
 		List<Categoria> listCat = context.getBean("listaArray", List.class);
 		listCat.add(Categoria.DRAMA);
 		listCat.add(Categoria.ACCION);
-		
-		//TODO: Crea dos posiciones de mas antes, echar un ojo y arreglar
+
 		for(int i = 0; i < 8; i++) {
-			gestor.altaPelicula("Pepito", "Hulio", "Es increible", listCat);
+			gestor.altaPelicula("Pepito", "Hulio", "Es increible", listCat, context);
 		}
 		
 		List<Categoria> listLord = context.getBean("listaArray", List.class);
@@ -32,13 +36,13 @@ public class LanzadorPeliculas {
 		listLord.add(Categoria.ACCION);
 		listLord.add(Categoria.TERROR);
 		
-		gestor.altaPelicula("The lord of the Rings", "Peter Jackson", "Best movie ever", listLord);
+		gestor.altaPelicula("The lord of the Rings", "Peter Jackson", "Best movie ever", listLord, context);
 		
 		List<Categoria> listStar = context.getBean("listaArray", List.class);
 		listStar.add(Categoria.ACCION);
 		listStar.add(Categoria.TERROR);
 		
-		gestor.altaPelicula("Starkid", "Bobinski", "Brrr", listStar);
+		gestor.altaPelicula("Starkid", "Bobinski", "Brrr", listStar, context);
 		
 		imprimirPeliculas(gestor.listarPeliculas());
 		
@@ -76,6 +80,7 @@ public class LanzadorPeliculas {
 		gestor.deletePelicula(listaDeletes);
 		
 		imprimirPeliculas(gestor.listarPeliculas());
+		((AbstractApplicationContext)context).close();
 	}
 	
 	public static void imprimirPeliculas(Collection<Pelicula> peliculas) {

@@ -7,7 +7,6 @@
 	
 	<bean id = "miGestionDePeliculas" class = "com.sopra.peliculas.negocio.GestorPeliculas" scope="singleton">
 		<property name="miDaoPeliculas" ref="miDaoPeliculas"/>
-		<property name="peliculaAInsertar" ref="pelicula"></property>
 	</bean>
 	
 	<bean id = "miDaoPeliculas" class = "com.sopra.peliculas.dao.PeliculasDaoImplemtacion" scope="singleton">

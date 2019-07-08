@@ -3,6 +3,10 @@ package com.sopra.peliculas.negocio;
 import java.util.Collection;
 import java.util.List;
 
+import javax.naming.Context;
+
+import org.springframework.context.ApplicationContext;
+
 import com.sopra.peliculas.dao.IPeliculaDao;
 import com.sopra.peliculas.modelo.Categoria;
 import com.sopra.peliculas.modelo.Pelicula;
@@ -17,10 +21,9 @@ public class GestorPeliculas {
 	}
 
 	public void altaPelicula(String titulo, String director, String sinopsis,
-							List<Categoria> listaDeCategorias) {
+							List<Categoria> listaDeCategorias, ApplicationContext context) {
 		
-		//TODO: QUITAR ESTE NEW PELICULA, SE COMPORTA COMO UN SINGLETON
-		peliculaAInsertar = new Pelicula();
+		peliculaAInsertar = context.getBean("pelicula", Pelicula.class);
 		peliculaAInsertar.setTitulo(titulo);
 		peliculaAInsertar.setDirector(director);
 		peliculaAInsertar.setSinopsis(sinopsis);
