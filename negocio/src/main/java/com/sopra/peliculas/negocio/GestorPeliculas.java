@@ -3,17 +3,21 @@ package com.sopra.peliculas.negocio;
 import java.util.Collection;
 import java.util.List;
 
-import javax.naming.Context;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Service;
 
 import com.sopra.peliculas.dao.IPeliculaDao;
 import com.sopra.peliculas.modelo.Categoria;
 import com.sopra.peliculas.modelo.Pelicula;
 
+@Service
 public class GestorPeliculas {
 	
+	@Autowired
 	private IPeliculaDao<Integer, Pelicula> miDaoPeliculas;
+	
+	
 	private Pelicula peliculaAInsertar;
 	
 	public GestorPeliculas() {

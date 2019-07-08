@@ -16,13 +16,13 @@ public class LanzadorPeliculas {
 	private static ApplicationContext context;
 	
 	static {
-		context  = new ClassPathXmlApplicationContext("bean_bussiness.xml");
+		context  = new ClassPathXmlApplicationContext("bean.xml");
 	}
 	
 	public static void main(String[] args) {
 
 		
-		GestorPeliculas gestor = context.getBean("miGestionDePeliculas", GestorPeliculas.class);
+		GestorPeliculas gestor = context.getBean(GestorPeliculas.class);
 		List<Categoria> listCat = context.getBean("listaArray", List.class);
 		listCat.add(Categoria.DRAMA);
 		listCat.add(Categoria.ACCION);
@@ -46,8 +46,8 @@ public class LanzadorPeliculas {
 		
 		imprimirPeliculas(gestor.listarPeliculas());
 		
-		Pelicula peli1 = context.getBean("pelicula", Pelicula.class);
-		Pelicula peli2 = context.getBean("pelicula", Pelicula.class);
+		Pelicula peli1 = context.getBean(Pelicula.class);
+		Pelicula peli2 = context.getBean(Pelicula.class);
 		
 		List<Categoria> listaCatActualizada = context.getBean("listaArray", List.class);
 		listaCatActualizada.add(Categoria.DRAMA);

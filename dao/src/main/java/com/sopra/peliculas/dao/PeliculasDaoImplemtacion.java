@@ -3,10 +3,17 @@ package com.sopra.peliculas.dao;
 import java.util.Collection;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
+
 import com.sopra.peliculas.modelo.Pelicula;
 
+@Repository
 public class PeliculasDaoImplemtacion implements IPeliculaDao<Integer, Pelicula>{
 	
+	@Autowired
+	@Qualifier("hashMapPelis")
 	private Map<Integer, Pelicula> mapaPeliculas;
 	
 	public PeliculasDaoImplemtacion() {
