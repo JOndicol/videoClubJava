@@ -4,7 +4,7 @@
   <groupId>com.sopra.web</groupId>
   <artifactId>ejemplo05web</artifactId>
   <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <name>ejemplo05web Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
