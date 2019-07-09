@@ -9,7 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import com.sopra.peliculas.modelo.Pelicula;
+import com.sopra.peliculas.negocio.GestorPeliculas;
 
 /**
  * Servlet implementation class ServletMostrarPeliculas
@@ -17,19 +21,25 @@ import com.sopra.peliculas.modelo.Pelicula;
 @WebServlet("/mostrarPeliculas")
 public class ServletMostrarPeliculas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletMostrarPeliculas() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	
+	private static ApplicationContext context;
+    
+	private static GestorPeliculas gestor;
+
+	
+	
+
+	@Override
+	public void init() throws ServletException {
+		ServletMostrarPeliculas.context = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Collection<Pelicula> listaPeliculas = ServletAddPelicula.gestor.listarPeliculas();
+		gestor = context.getBean(GestorPeliculas.class);
+		Collection<Pelicula> listaPeliculas = gestor.listarPeliculas();
 		
 		for(Pelicula pelicula: listaPeliculas) {
 			response.getWriter().append("Peliculas: " + pelicula);

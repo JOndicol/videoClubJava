@@ -23,9 +23,9 @@ public class GestorPeliculas {
 	}
 
 	public void altaPelicula(String titulo, String director, String sinopsis,
-							List<String> listaDeCategorias, Pelicula pelicula) {
+							List<String> listaDeCategorias) {
 		
-		peliculaAInsertar = pelicula;
+		peliculaAInsertar = new Pelicula();
 		peliculaAInsertar.setTitulo(titulo);
 		peliculaAInsertar.setDirector(director);
 		peliculaAInsertar.setSinopsis(sinopsis);

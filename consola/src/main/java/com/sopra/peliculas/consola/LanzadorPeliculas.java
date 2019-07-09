@@ -26,7 +26,7 @@ public class LanzadorPeliculas {
 		listCat.add("Drama");
 
 		for(int i = 0; i < 8; i++) {
-			gestor.altaPelicula("Pepito", "Hulio", "Es increible", listCat, context.getBean(Pelicula.class));
+			gestor.altaPelicula("Pepito", "Hulio", "Es increible", listCat);
 		}
 		
 		List<String> listLord = context.getBean("listaArray", List.class);
@@ -34,13 +34,13 @@ public class LanzadorPeliculas {
 		listLord.add("Accion");
 		listLord.add("Fantasia");
 		
-		gestor.altaPelicula("The lord of the Rings", "Peter Jackson", "Best movie ever", listLord, context.getBean(Pelicula.class));
+		gestor.altaPelicula("The lord of the Rings", "Peter Jackson", "Best movie ever", listLord);
 		
 		List<String> listStar = context.getBean("listaArray", List.class);
 		listStar.add("Ciencia Ficcion");
 		listStar.add("Accion");
 		
-		gestor.altaPelicula("Starkid", "Bobinski", "Brrr", listStar, context.getBean(Pelicula.class));
+		gestor.altaPelicula("Starkid", "Bobinski", "Brrr", listStar);
 		
 		imprimirPeliculas(gestor.listarPeliculas());
 		
