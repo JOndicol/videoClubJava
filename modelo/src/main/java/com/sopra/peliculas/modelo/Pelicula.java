@@ -15,7 +15,7 @@ public class Pelicula {
 	private String titulo;
 	private String director;
 	private String sinopsis;
-	private List<Categoria> listaDeCategorias;
+	private List<String> listaDeCategorias;
 	
 	static{
 		secuencia = new AtomicInteger();
@@ -27,7 +27,7 @@ public class Pelicula {
 	}
 
 	public Pelicula(String titulo, String director, String sinopsis,
-			List<Categoria> listaDeCategorias) {
+			List<String> listaDeCategorias) {
 		super();
 		this.identificador = secuencia.incrementAndGet();
 		this.titulo = titulo;
@@ -100,13 +100,15 @@ public class Pelicula {
 		this.sinopsis = sinopsis;
 	}
 
-	public List<Categoria> getListaDeCategorias() {
+	public List<String> getListaDeCategorias() {
 		return listaDeCategorias;
 	}
 
-	public void setListaDeCategorias(List<Categoria> listaDeCategorias) {
+	public void setListaDeCategorias(List<String> listaDeCategorias) {
 		this.listaDeCategorias = listaDeCategorias;
 	}
+
+	
 
 	
 	

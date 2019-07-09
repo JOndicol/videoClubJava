@@ -4,11 +4,9 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import com.sopra.peliculas.dao.IPeliculaDao;
-import com.sopra.peliculas.modelo.Categoria;
 import com.sopra.peliculas.modelo.Pelicula;
 
 @Service
@@ -25,9 +23,9 @@ public class GestorPeliculas {
 	}
 
 	public void altaPelicula(String titulo, String director, String sinopsis,
-							List<Categoria> listaDeCategorias, ApplicationContext context) {
+							List<String> listaDeCategorias, Pelicula pelicula) {
 		
-		peliculaAInsertar = context.getBean("pelicula", Pelicula.class);
+		peliculaAInsertar = pelicula;
 		peliculaAInsertar.setTitulo(titulo);
 		peliculaAInsertar.setDirector(director);
 		peliculaAInsertar.setSinopsis(sinopsis);

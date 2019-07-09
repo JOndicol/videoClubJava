@@ -7,7 +7,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.sopra.peliculas.modelo.Categoria;
 import com.sopra.peliculas.modelo.Pelicula;
 import com.sopra.peliculas.negocio.GestorPeliculas;
 
@@ -23,35 +22,34 @@ public class LanzadorPeliculas {
 
 		
 		GestorPeliculas gestor = context.getBean(GestorPeliculas.class);
-		List<Categoria> listCat = context.getBean("listaArray", List.class);
-		listCat.add(Categoria.DRAMA);
-		listCat.add(Categoria.ACCION);
+		List<String> listCat = context.getBean("listaArray", List.class);
+		listCat.add("Drama");
 
 		for(int i = 0; i < 8; i++) {
-			gestor.altaPelicula("Pepito", "Hulio", "Es increible", listCat, context);
+			gestor.altaPelicula("Pepito", "Hulio", "Es increible", listCat, context.getBean(Pelicula.class));
 		}
 		
-		List<Categoria> listLord = context.getBean("listaArray", List.class);
-		listLord.add(Categoria.CIENCIA_FICCION);
-		listLord.add(Categoria.ACCION);
-		listLord.add(Categoria.TERROR);
+		List<String> listLord = context.getBean("listaArray", List.class);
+		listLord.add("Ciencia Ficcion");
+		listLord.add("Accion");
+		listLord.add("Fantasia");
 		
-		gestor.altaPelicula("The lord of the Rings", "Peter Jackson", "Best movie ever", listLord, context);
+		gestor.altaPelicula("The lord of the Rings", "Peter Jackson", "Best movie ever", listLord, context.getBean(Pelicula.class));
 		
-		List<Categoria> listStar = context.getBean("listaArray", List.class);
-		listStar.add(Categoria.ACCION);
-		listStar.add(Categoria.TERROR);
+		List<String> listStar = context.getBean("listaArray", List.class);
+		listStar.add("Ciencia Ficcion");
+		listStar.add("Accion");
 		
-		gestor.altaPelicula("Starkid", "Bobinski", "Brrr", listStar, context);
+		gestor.altaPelicula("Starkid", "Bobinski", "Brrr", listStar, context.getBean(Pelicula.class));
 		
 		imprimirPeliculas(gestor.listarPeliculas());
 		
 		Pelicula peli1 = context.getBean(Pelicula.class);
 		Pelicula peli2 = context.getBean(Pelicula.class);
 		
-		List<Categoria> listaCatActualizada = context.getBean("listaArray", List.class);
-		listaCatActualizada.add(Categoria.DRAMA);
-		listaCatActualizada.add(Categoria.TERROR);
+		List<String> listaCatActualizada = context.getBean("listaArray", List.class);
+		listaCatActualizada.add("Drama");
+		listaCatActualizada.add("Terror");
 		
 		peli1.setDirector("Getilla");
 		peli1.setSinopsis("Una trameadina al año no hace daño");
