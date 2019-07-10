@@ -7,6 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%=request.getAttribute("mostrarPeliculas") %>
+
+<button onclick="listarPeliculas" name="Mostrar peliculas">
+	Listar Peliculas
+</button>
+
+${listaPeliculas}
+
+
+
+
 </body>
 </html>

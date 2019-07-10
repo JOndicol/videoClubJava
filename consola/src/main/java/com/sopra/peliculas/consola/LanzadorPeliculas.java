@@ -18,6 +18,7 @@ public class LanzadorPeliculas {
 		context  = new ClassPathXmlApplicationContext("bean.xml");
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 
 		
