@@ -27,17 +27,20 @@ public class PeliculasDaoImplemtacion implements IPeliculaDao<Integer, Pelicula>
 
 	@Override
 	public void deletePelicula(Pelicula peliculaABorrar) {
+
 		mapaPeliculas.remove(peliculaABorrar.getIdentificador());
 	}
 
 	@Override
 	public void updatePelicula(Pelicula peliculaAActualizar) {
+
 		mapaPeliculas.replace(peliculaAActualizar.getIdentificador(), peliculaAActualizar);
 		
 	}
 
 	@Override
 	public Pelicula readById(Integer identificador) {
+
 		return mapaPeliculas.get(identificador);
 	}
 
