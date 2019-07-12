@@ -1,0 +1,8 @@
+server:
+  port: 8890
+
+spring:
+  application:
+    name: videoClubJava
+  cloud:    config:      uri:      - http://localhost:8835
+      fail-fast: false      enabled: true

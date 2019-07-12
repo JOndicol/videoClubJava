@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: configServer
+  cloud:    config:      server:        git:          uri: C:\config-Server-videoclub
+        
+server:  port: 8835
