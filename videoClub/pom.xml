@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.sopra.peliculas</groupId>
 	<artifactId>videoClub</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>v2.0.0</version>
 	<name>videoClub</name>
 	<description>Videoclub using Springboot</description>
 
