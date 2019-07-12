@@ -3,6 +3,7 @@ package com.sopra.peliculas.model.entities;
 import java.util.List;
 
 import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,7 @@ public class Pelicula {
 	private String titulo;
 	private String director;
 	private String sinopsis;
+	@ElementCollection
 	@CollectionTable
 	private List<String> listaDeCategorias;
 	
