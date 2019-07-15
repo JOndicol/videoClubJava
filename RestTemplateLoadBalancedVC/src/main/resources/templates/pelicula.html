@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Alta de peliculas</title>
+</head>
+<body>
+	<form action="#" th:object="${pelicula}" th:action="@{/nuevaPelicula}">
+		<label for="identificador">Identificador</label><input type="text" id="identificador" th:field="*{identificador}"></br>
+		<label for="titulo">Titulo de la pelicula</label><input type="text" th:field="*{titulo}" id="titulo"></br>
+		<label for="director">Director de la pelicula</label><input type="text" th:field="*{director}" id="director"></br>
+		<label for="sinopsis">Sinopsis</label><input type="text" th:field="*{sinopsis}" id="sinopsis"></br>
+		<label for="listaDeCategorias">Categorias</label><input type="text" th:field="*{listaDeCategorias}" id="listaDeCategorias"></br>
+		<input type="submit" value="Alta de nueva pelicula">
+	</form>
+	
+	
+	
+	<form action="#" th:object="${peliculaActualizada}" th:action="@{/modificarPelicula}">
+		<label for="identificador">Identificador</label><input type="text" id="identificador" th:field="*{identificador}"></br>
+		<label for="titulo">Titulo de la pelicula</label><input type="text" th:field="*{titulo}" id="titulo"></br>
+		<label for="director">Director de la pelicula</label><input type="text" th:field="*{director}" id="director"></br>
+		<label for="sinopsis">Sinopsis</label><input type="text" th:field="*{sinopsis}" id="sinopsis"></br>
+		<label for="listaDeCategorias">Categorias</label><input type="text" th:field="*{listaDeCategorias}" id="listaDeCategorias"></br>
+		<input type="submit" value="Actualizar pelicula">
+	</form>
+
+	<a href="#" th:href="@{/listadoDePeliculas}">Lista de Peliculas</a>
+</body>
+</html>

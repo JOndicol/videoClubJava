@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Listado de armas</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th><th>Titulo</th><th>Director</th><th>Sinopsis</th><th>Categorias</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="pelicula : ${peliculas}">
+				<td th:text="${pelicula.identificador}"></td>
+				<td th:text="${pelicula.titulo}"></td>
+				<td th:text="${pelicula.director}"></td>
+				<td th:text="${pelicula.sinopsis}"></td>
+				<td th:text="${pelicula.listaDeCategorias}"></td>
+				<td><a href="#" th:href="@{/eliminarPelicula/} + ${pelicula.identificador}">Eliminar pelicula</a></td>
+				<!--<td><a href="#" th:href="@{/modificarPelicula/} + ${pelicula.identificador} + ${pelicula}" >Modificar pelicula</a></td> -->
+			</tr>
+		</tbody>
+	</table>
+	<a href="#" th:href="@{/}">Modificar las peliculas</a>
+</body>
+</html>
