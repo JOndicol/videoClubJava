@@ -32,7 +32,7 @@ public class ControladorDePeliculas {
 	
 	
 	@RequestMapping("/listadoDePeliculas")
-	public String listadoDeArmas(Model model) {
+	public String listadoDePeliculas(Model model) {
 		String urlDeAccesoAlServicio = "http://videoClubJava/listarPeliculas";
 		ResponseEntity<List> respuestaDelServidor = restTemplate.exchange(urlDeAccesoAlServicio, HttpMethod.GET, null, List.class);
 		List listaPeliculas = respuestaDelServidor.getBody();
@@ -41,7 +41,7 @@ public class ControladorDePeliculas {
 	}
 	
 	@RequestMapping("/nuevaPelicula")
-	public String altaArma(@RequestParam("titulo") String titulo, 
+	public String altaPelicula(@RequestParam("titulo") String titulo, 
 			@RequestParam("director") String director, @RequestParam("sinopsis") String sinopsis,
 			@RequestParam("listaDeCategorias") List<String> listaDeCategorias ,Model model) {
 		String urlDeAccesoAlServicio = "http://videoClubJava/insertarPelicula";
