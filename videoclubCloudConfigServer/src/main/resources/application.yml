@@ -1,6 +1,5 @@
 spring:
   application:
     name: configServer
-  cloud:    config:      server:        git:          uri: C:\config-Server-videoclub
-        
-server:  port: 8835
+  cloud:    config:      server:        git:          uri: /config-Server-videoclub
+server:  port:  8080

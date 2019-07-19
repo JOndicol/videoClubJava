@@ -1,7 +1,7 @@
 server:
-  port: 8890
+  port: 8080
 spring:
   application:
     name: videoClubJava
-  cloud:    config:      uri:      - http://localhost:8835
+  cloud:    config:      uri:      - http://config-server:8080
       fail-fast: false      enabled: true

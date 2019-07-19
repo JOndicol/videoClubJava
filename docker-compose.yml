@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  mysql-server:
+    image: mysql:8.0.16
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+  config-server:
+    build: ./videoclubCloudConfigServer
+  eureka:
+    build: ./videoclubCloudEureka
+    ports:
+      - 8761:8761
+  back:
+    build: ./videoClub
+    depends_on:
+      - mysql-server
+      - eureka
+      - config-server
+  front:
+    build: ./RestTemplateLoadBalancedVC
+    ports:
+      - 55537:8080
+    depends_on:
+      - eureka
+      - back
